@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV REMOTE</title>
+    <style>
+        body{
+    height: 900px;
+}
+.tv-container{
+    background-color: black;
+    color: white;
+    position: absolute;
+    width: 50%;
+    margin-left: 25%;
+    height: 300px;
+    border: 5px solid;
+    border-radius: 10px;
+
+}
+
+.block-channel{
+    background-color: black;
+    text-align: center;
+    margin-top: 350px;
+    height: 300px;
+    width: 50%;
+    margin-left: 25%;
+    position: absolute;
+    border: 5px solid;
+    border-radius: 10px;
+}
+.block-navigate{
+    
+    position: absolute;
+    text-align: center;
+    margin-top: 540px;
+    height: 200px;
+    width: 50%;
+    margin-left: 25%;
+   
+   
+}
+
+
+.block-channel > button{
+    background-color: white;
+    padding: 20px;
+    margin: 5px;
+    
+}
+button{
+    cursor: pointer;
+}
+button:hover{
+    background-color: red;
+}
+#power-off{
+    background-color: white;
+}
+#power-off:hover{
+    background-color: red;
+}
+
+.block-navigate > input {
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+}
+
+#screen{
+    text-align: center;
+    margin-top: 130px;
+    font-size: 30px;
+    font-weight: 1000;
+}
+
+.tvlight{
+    background-color:white;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin-top: 1px;
+}
+
+.tvlight{
+    margin-left: 97%;
+}
+
+.rmlight{
+    background-color:white;
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+    margin-left: 50%;
+    
+}
+
+@media only screen and (max-width: 700px){
+    .tv-container{
+        width: 400px;
+        height: 300px;
+    }
+
+    .block{
+        width: 400px;
+        height: 350px;
+    }
+    .block-navigate{
+        margin-top: 600px;
+    }
+}
+    </style>
+</head>
+
+
+
+<body>
+    <h1 style="text-align: center">TV</h1>
+  
+    <div class="tv-container" id="container">
+
+      <p id="tvLightingUp" class="tvlight"></p>
+
+        <p id="screen">Power Off</p>
+  
+    </div> 
+
+ 
+    <div class="block">
+     
+
+        <div class="block block-channel">
+
+            <p id="remoteLightingUp" class="rmlight"></p>
+
+             <p>TV Remote</p>
+
+            <button type="submit" id="1" onclick="pressBtn1()" disabled>1</button>
+            <button type="submit" id="2" onclick="pressBtn2()" disabled>2</button>
+            <button type="submit" id="3" onclick="pressBtn3()" disabled>3</button>
+            <button type="submit" id="4" onclick="pressBtn4()" disabled>4</button>
+            <button type="submit" id="5" onclick="pressBtn5()" disabled>5</button>
+            <button type="submit" id="6" onclick="pressBtn6()" disabled>6</button>
+            <button type="submit" id="7" onclick="pressBtn7()" disabled>7</button>
+            <button type="submit" id="8" onclick="pressBtn8()" disabled>8</button>
+            <button type="submit" id="9" onclick="pressBtn9()" disabled>9</button>
+       
+        </div>
+
+       
+        <div class="block block-navigate">
+
+            <input type="button" value="On" id="power-off" onclick="onoff();">
+           
+           
+        </div>
+          </div> 
+          <script>
+            function onoff(){
+         currentvalue = document.getElementById('power-off').value;
+         if(currentvalue == "Off"){
+           document.getElementById("power-off").value="On";
+           offTV();
+         }else{
+           document.getElementById("power-off").value="Off";
+           onTV();
+         }
+        }
+        
+           function onTV(){
+        document.getElementById("screen").innerHTML = "Power ON";
+        document.getElementById("1").disabled = false;
+        document.getElementById("2").disabled = false;
+        document.getElementById("3").disabled = false;
+        document.getElementById("4").disabled = false;
+        document.getElementById("5").disabled = false;
+        document.getElementById("6").disabled = false;
+        document.getElementById("7").disabled = false;
+        document.getElementById("8").disabled = false;
+        document.getElementById("9").disabled = false;
+        remoteLight('red');
+        tvLight('red');
+        }
+        
+        function offTV(){
+        document.getElementById("screen").innerHTML = "";
+        document.getElementById("1").disabled = true;
+        document.getElementById("2").disabled = true;
+        document.getElementById("3").disabled = true;
+        document.getElementById("4").disabled = true;
+        document.getElementById("5").disabled = true;
+        document.getElementById("6").disabled = true;
+        document.getElementById("7").disabled = true;
+        document.getElementById("8").disabled = true;
+        document.getElementById("9").disabled = true;
+        remoteLight('red');
+        tvLight('red');
+        }
+        
+        
+        function tvLight(color){
+        document.getElementById('tvLightingUp').style.background = color;
+        setTimeout(function(){
+        tvLight('white')
+        }, 1000)
+        }
+        
+        function remoteLight(color){
+        document.getElementById('remoteLightingUp').style.background = color;
+        setTimeout(function(){
+        remoteLight('white')
+        }, 1000)
+        }
+        
+        function pressBtn1(){
+        document.getElementById("screen").innerHTML = "1";
+        remoteLight('red');
+        tvLight('red');
+        }
+        function pressBtn2(){
+        document.getElementById("screen").innerHTML = "2";
+        remoteLight('red');
+        tvLight('red');
+        }
+        function pressBtn3(){
+        document.getElementById("screen").innerHTML = "3";
+        remoteLight('red');
+        tvLight('red');
+        }
+        function pressBtn4(){
+        document.getElementById("screen").innerHTML = "4";
+        remoteLight('red');
+        tvLight('red');
+        }
+        function pressBtn5(){
+        document.getElementById("screen").innerHTML = "5";
+        remoteLight('red');
+        tvLight('red');
+        }
+        function pressBtn6(){
+        document.getElementById("screen").innerHTML = "6";
+        remoteLight('red');
+        tvLight('red');
+        }
+        function pressBtn7(){
+        document.getElementById("screen").innerHTML = "7";
+        remoteLight('red');
+        tvLight('red');
+        }
+        function pressBtn8(){
+        document.getElementById("screen").innerHTML = "8";
+        remoteLight('red');
+        tvLight('red');
+        }
+        function pressBtn9(){
+        document.getElementById("screen").innerHTML = "9";
+        remoteLight('red');
+        tvLight('red');
+        }
+         </script>
+</body>
+
+</html>
